@@ -1,4 +1,4 @@
-package com.firepong;
+package com.firepong.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

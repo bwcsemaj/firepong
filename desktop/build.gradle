@@ -1,55 +1,52 @@
-apply plugin: "java"
-
-sourceCompatibility = 1.6
-sourceSets.main.java.srcDirs = [ "src/" ]
-
-project.ext.mainClassName = "com.firepong.desktop.DesktopLauncher"
-project.ext.assetsDir = new File("../core/assets");
-
-task run(dependsOn: classes, type: JavaExec) {
-    main = project.mainClassName
-    classpath = sourceSets.main.runtimeClasspath
-    standardInput = System.in
-    workingDir = project.assetsDir
-    ignoreExitValue = true
+plugins { 
+	id 'io.franzbecker.gradle-lombok' version '1.14'
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "4.0.2"
 }
 
-task debug(dependsOn: classes, type: JavaExec) {
-    main = project.mainClassName
-    classpath = sourceSets.main.runtimeClasspath
-    standardInput = System.in
-    workingDir = project.assetsDir
-    ignoreExitValue = true
-    debug = true
-}
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: 'java'
+apply plugin: 'eclipse'
 
-task dist(type: Jar) {
-    from files(sourceSets.main.output.classesDir)
-    from files(sourceSets.main.output.resourcesDir)
-    from {configurations.compile.collect {zipTree(it)}}
-    from files(project.assetsDir);
- 
+sourceCompatibility = 1.8
+
+jar {
+    baseName = 'fire-pong'
+    version = '1'
     manifest {
-        attributes 'Main-Class': project.mainClassName
-    }
-}
-
-dist.dependsOn classes
-
-eclipse {
-    project {
-        name = appName + "-desktop"
-        linkedResource name: 'assets', type: '2', location: 'PARENT-1-PROJECT_LOC/core/assets'
-    }
-}
-
-task afterEclipseImport(description: "Post processing after project generation", group: "IDE") {
-  doLast {
-    def classpath = new XmlParser().parse(file(".classpath"))
-    new Node(classpath, "classpathentry", [ kind: 'src', path: 'assets' ]);
-    def writer = new FileWriter(file(".classpath"))
-    def printer = new XmlNodePrinter(new PrintWriter(writer))
-    printer.setPreserveWhitespace(true)
-    printer.print(classpath)
+    attributes(
+      'Main-Class': 'com.firepong.driver.FirePongDriver'
+    )
   }
+  from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/java", "src/main/resources"]
+    		includes = ["**/*.css", "**/*.wav", "**/*.mp3", "**/*.mp4", "**/*.png", "**/*.xml",
+    		"**/*.fxml"]
+        }
+    }
+}
+
+dependencies {
+        compile project(":core")
+        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-desktop"  
+        
+        compile "log4j:log4j:1.2.17"
+		compile "org.slf4j:slf4j-api:1.7.7"
+		compile "org.slf4j:slf4j-log4j12:1.7.7"
+		
+	    compile project(':core')
 }
