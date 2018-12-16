@@ -1,44 +1,49 @@
 package com.firepong.game;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class FirePong extends ApplicationAdapter{
-	SpriteBatch spriteBatch;
-	Texture img;
 
-	OrthographicCamera camera;
+	private WorldController worldController;
+	private WorldRenderer worldRenderer;
 
 	@Override
 	public void create(){
 
-		float width = Gdx.graphics.getWidth();
-		float height = Gdx.graphics.getHeight();
+		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
-		camera = new OrthographicCamera(1, height / width);
-		spriteBatch = new SpriteBatch();
-
-		// img = new Texture("badlogic.jpg");
+		// Initialize
+		worldController = new WorldController();
+		worldRenderer = new WorldRenderer(worldController);
 
 	}
 
 	@Override
 	public void render(){
-		System.out.println("HELLO");
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+
+		// Update game world by the time that has passed
+		worldController.update(Gdx.graphics.getDeltaTime());
+
+		// Clear the screen
+		Gdx.gl.glClearColor(255, 255, 255, 255);
+
+		// Clears the screen
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		spriteBatch.begin();
-		// grehagaergeragreabatch.draw(img, 0, 0);
-		spriteBatch.end();
+
+		// Render game world to Screen
+		worldRenderer.render();
+	}
+
+	@Override
+	public void resize(int width, int height){
+		worldRenderer.resize(width, height);
 	}
 
 	@Override
 	public void dispose(){
-		spriteBatch.dispose();
-		img.dispose();
+		worldRenderer.dispose();
 	}
 }

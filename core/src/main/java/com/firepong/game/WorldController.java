@@ -15,7 +15,7 @@ public class WorldController{
 
 	}
 
-	public void update(flot deltaTime){
+	public void update(float deltaTime){
 
 	}
 	// End Methods

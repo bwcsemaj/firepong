@@ -14,12 +14,19 @@ public class WorldRenderer implements Disposable{
 	// Start Constructors
 	public WorldRenderer(WorldController worldController){
 		this.worldController = worldController;
+		init();
 	}
 
 	// End Constructors
 
 	// Start Methods
 	private void init(){
+		batch = new SpriteBatch();
+		camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
+
+		// Set camera Position: X, Y, Z
+		camera.position.set(Constants.VIEWPORT_WIDTH / 2, Constants.VIEWPORT_HEIGHT / 2, 0);
+		camera.update();
 
 	}
 
@@ -28,13 +35,13 @@ public class WorldRenderer implements Disposable{
 	}
 
 	public void resize(int width, int height){
-
+		camera.viewportWidth = (Constants.VIEWPORT_HEIGHT / height) * width;
+		camera.update();
 	}
 
 	@Override
 	public void dispose(){
-		// TODO Auto-generated method stub
-
+		batch.dispose();
 	}
 
 	// End Methods
