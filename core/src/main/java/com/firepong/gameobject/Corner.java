@@ -14,39 +14,39 @@ import com.firepong.game.Constants;
 
 import lombok.Getter;
 
-public class Paddle extends AbstractGameObject{
+public class Corner extends AbstractGameObject{
 
 	// Attributes
 	@Getter private Sprite sprite;
 
 	// Start Constructors
-	public Paddle(World world, AssetManager assetManager, int x, int y){
+	public Corner(World world, AssetManager assetManager, int x, int y){
 		super(world, x, y);
 
 		// Initialize Sprite
 		Texture paddleTexture = assetManager.get("Square.png", Texture.class);
 		sprite = new Sprite(paddleTexture);
+
 	}
 	// End Constructors
 
 	// Start Methods
 
-	@Override
 	protected void initBox2D(World world, int x, int y){
 
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();
 		// We set our body to dynamic, for something like ground which doesn't move we would set it to
 		// StaticBody
-		bodyDef.type = BodyType.KinematicBody;
+		bodyDef.type = BodyType.DynamicBody;
+		bodyDef.position.set(x, y);
 
 		// Create our body in the world using our body definition
 		Body body = world.createBody(bodyDef);
-		body.getPosition().set(Constants.PADDLE_WIDTH / 2, Constants.PADDLE_HEIGHT / 2);
 
 		// Create shape of paddle
 		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(Constants.PADDLE_WIDTH, Constants.PADDLE_HEIGHT);
+		shape.setAsBox(Constants.CORNER_SIZE, Constants.CORNER_SIZE);
 
 		// Create a fixture definition to apply our shape to
 		FixtureDef fixtureDef = new FixtureDef();

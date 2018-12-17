@@ -3,22 +3,36 @@ package com.firepong.game;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 
 public class FirePong extends ApplicationAdapter{
 
 	private WorldController worldController;
 	private WorldRenderer worldRenderer;
+	private AssetManager assetManager;
 
 	@Override
 	public void create(){
 
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
-		// Initialize
-		worldController = new WorldController();
-		worldRenderer = new WorldRenderer(worldController);
+		// Initialize Assets
+		initAssetManager();
 
+		// Initialize
+		worldController = new WorldController(assetManager);
+		worldRenderer = new WorldRenderer(worldController);
+		Gdx.graphics.setWindowedMode(1000, 1000);
+
+	}
+
+	private void initAssetManager(){
+		assetManager = new AssetManager();
+		assetManager.load("Ball.png", Texture.class);
+		assetManager.load("Square.png", Texture.class);
+		assetManager.finishLoading();
 	}
 
 	@Override
