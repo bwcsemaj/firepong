@@ -20,11 +20,11 @@ public class Corner extends AbstractGameObject{
 	@Getter private Sprite sprite;
 
 	// Start Constructors
-	public Corner(World world, AssetManager assetManager, int x, int y){
+	public Corner(World world, AssetManager assetManager, int x, int y, String texturePath){
 		super(world, x, y);
 
 		// Initialize Sprite
-		Texture paddleTexture = assetManager.get("Square.png", Texture.class);
+		Texture paddleTexture = assetManager.get(texturePath, Texture.class);
 		sprite = new Sprite(paddleTexture);
 
 	}
@@ -38,7 +38,7 @@ public class Corner extends AbstractGameObject{
 		BodyDef bodyDef = new BodyDef();
 		// We set our body to dynamic, for something like ground which doesn't move we would set it to
 		// StaticBody
-		bodyDef.type = BodyType.DynamicBody;
+		bodyDef.type = BodyType.StaticBody;
 		bodyDef.position.set(x, y);
 
 		// Create our body in the world using our body definition

@@ -15,7 +15,7 @@ import lombok.Getter;
 public class WorldController{
 
 	// Attributes
-	private World world;// Box2D
+	@Getter private World world;// Box2D
 	private AssetManager assetManager;
 
 	@Getter private Corner[] corners;
@@ -51,7 +51,8 @@ public class WorldController{
 		IntStream.range(0, 4).forEach(value -> {
 			System.out.println(Arrays.toString(points[value]));
 
-			Corner corner = new Corner(world, assetManager, points[value][0], points[value][1]);
+			Corner corner = new Corner(world, assetManager, points[value][0], points[value][1],
+				"Square" + (Integer.toString(value + 1) + ".png"));
 			corners[value] = corner;
 		});
 

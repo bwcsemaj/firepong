@@ -32,7 +32,12 @@ public class FirePong extends ApplicationAdapter{
 		assetManager = new AssetManager();
 		assetManager.load("Ball.png", Texture.class);
 		assetManager.load("Square.png", Texture.class);
+		assetManager.load("Square1.png", Texture.class);
+		assetManager.load("Square2.png", Texture.class);
+		assetManager.load("Square3.png", Texture.class);
+		assetManager.load("Square4.png", Texture.class);
 		assetManager.finishLoading();
+
 	}
 
 	@Override
