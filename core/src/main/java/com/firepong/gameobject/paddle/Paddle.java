@@ -20,7 +20,7 @@ public class Paddle extends AbstractGameObject implements Movable{
 	// Attributes
 	@Getter private Sprite sprite;
 	@Getter final private CardinalDirection direction;
-	@Getter private final float moveVelocity = 200;
+	// @Getter private final float moveVelocity = 200;
 	@Getter private final int width;
 	@Getter private final int height;
 
@@ -31,6 +31,8 @@ public class Paddle extends AbstractGameObject implements Movable{
 		this.width = width;
 		this.height = height;
 		this.direction = direction;
+
+		initBox2D(world, positionX, positionY);
 
 		// Initialize Sprite
 		// sprite = new Sprite(texture);
@@ -47,10 +49,11 @@ public class Paddle extends AbstractGameObject implements Movable{
 		// We set our body to dynamic, for something like ground which doesn't move we would set it to
 		// StaticBody
 		bodyDef.type = BodyType.KinematicBody;
+		bodyDef.position.set(positionX, positionY);
+		bodyDef.linearVelocity.set(new Vector2(0, 0));
 
 		// Create our body in the world using our body definition
 		Body body = world.createBody(bodyDef);
-		body.getPosition().set(new Vector2(positionX, positionY));
 
 		// Create shape of paddle
 		PolygonShape shape = new PolygonShape();
@@ -76,6 +79,12 @@ public class Paddle extends AbstractGameObject implements Movable{
 	public void move(GameController controller){
 		// TODO Auto-generated method stub
 		return;
+	}
+
+	@Override
+	public float getMoveVelocity(){
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	// End Methods

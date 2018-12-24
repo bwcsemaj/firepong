@@ -73,17 +73,17 @@ public class GameController{
 			Constants.PADDLE_SMALL);
 
 		// SOUTH VIEWPORT_WIDTH/2, 0 : PADDLE_BIG, PADDLE_SMALL
-		paddles[0] = new Paddle(world, CardinalDirection.SOUTH, (Constants.VIEWPORT / 2),
+		paddles[1] = new Paddle(world, CardinalDirection.SOUTH, (Constants.VIEWPORT / 2),
 			Constants.PADDLE_PADDING, Constants.PADDLE_BIG, Constants.PADDLE_SMALL);
 
 		// EAST 900, VIEWPORT_HEIGHT/2 : PADDLE_SMALL, PADDLE_BIG
-		paddles[0] = new Paddle(world, CardinalDirection.EAST, Constants.PADDLE_PADDING,
-			(Constants.VIEWPORT / 2), Constants.PADDLE_BIG, Constants.PADDLE_SMALL);
+		paddles[2] = new Paddle(world, CardinalDirection.EAST, Constants.PADDLE_PADDING,
+			(Constants.VIEWPORT / 2), Constants.PADDLE_SMALL, Constants.PADDLE_BIG);
 
 		// WEST 0, VIEWPORT_HEIGHT/2 : PADDLE_SMALL, PADDLE_BIG
-		paddles[0] = new Paddle(world, CardinalDirection.WEST,
+		paddles[3] = new Paddle(world, CardinalDirection.WEST,
 			Constants.VIEWPORT - Constants.PADDLE_SMALL - Constants.PADDLE_PADDING, (Constants.VIEWPORT / 2),
-			Constants.PADDLE_BIG, Constants.PADDLE_SMALL);
+			Constants.PADDLE_SMALL, Constants.PADDLE_BIG);
 
 	}
 
