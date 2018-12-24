@@ -37,20 +37,15 @@ public class FirePong extends ApplicationAdapter{
 		assetManager.load("Square3.png", Texture.class);
 		assetManager.load("Square4.png", Texture.class);
 		assetManager.finishLoading();
-
 	}
 
 	@Override
 	public void render(){
 
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 		// Update game world by the time that has passed
 		worldController.update(Gdx.graphics.getDeltaTime());
-
-		// Clear the screen
-		Gdx.gl.glClearColor(255, 255, 255, 255);
-
-		// Clears the screen
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		// Render game world to Screen
 		worldRenderer.render();

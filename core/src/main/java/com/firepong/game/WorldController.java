@@ -4,11 +4,12 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.firepong.gameobject.Ball;
 import com.firepong.gameobject.Corner;
-import com.firepong.gameobject.Paddle;
+import com.firepong.gameobject.paddle.Paddle;
 
 import lombok.Getter;
 
@@ -50,9 +51,8 @@ public class WorldController{
 		corners = new Corner[4];
 		IntStream.range(0, 4).forEach(value -> {
 			System.out.println(Arrays.toString(points[value]));
-
-			Corner corner = new Corner(world, assetManager, points[value][0], points[value][1],
-				"Square" + (Integer.toString(value + 1) + ".png"));
+			Texture texture = new Texture("Square" + Integer.toString(value + 1) + ".png");
+			Corner corner = new Corner(world, texture, assetManager, points[value][0], points[value][1]);
 			corners[value] = corner;
 		});
 

@@ -3,6 +3,7 @@ package com.firepong.gameobject;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -32,7 +33,7 @@ public class Ball extends AbstractGameObject{
 	// Start Methods
 
 	@Override
-	protected void initBox2D(World world, int x, int y){
+	protected void initBox2D(World world, int positionX, int positionY){
 
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();
@@ -41,7 +42,7 @@ public class Ball extends AbstractGameObject{
 		bodyDef.type = BodyType.DynamicBody;
 
 		// Set our body's starting position in the world
-		bodyDef.position.set(Constants.BALL_RADIUS / 2, Constants.BALL_RADIUS / 2);
+		bodyDef.position.set(new Vector2(positionX, positionY));
 
 		// Create our body in the world using our body definition
 		Body body = world.createBody(bodyDef);

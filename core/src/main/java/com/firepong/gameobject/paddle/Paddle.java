@@ -1,8 +1,8 @@
-package com.firepong.gameobject;
+package com.firepong.gameobject.paddle;
 
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -10,29 +10,34 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.firepong.game.CardinalDirection;
 import com.firepong.game.Constants;
+import com.firepong.gameobject.AbstractGameObject;
 
 import lombok.Getter;
 
-public class Paddle extends AbstractGameObject{
+public abstract class Paddle extends AbstractGameObject implements Movable{
 
 	// Attributes
 	@Getter private Sprite sprite;
+	@Getter final private CardinalDirection direction;
+	@Getter private final float moveVelocity = 200;
 
 	// Start Constructors
-	public Paddle(World world, AssetManager assetManager, int x, int y){
-		super(world, x, y);
+	public Paddle(World world, CardinalDirection direction, Texture texture, int positionX, int positionY){
+		super(world, positionX, positionY);
+
+		this.direction = direction;
 
 		// Initialize Sprite
-		Texture paddleTexture = assetManager.get("Square.png", Texture.class);
-		sprite = new Sprite(paddleTexture);
+		sprite = new Sprite(texture);
 	}
 	// End Constructors
 
 	// Start Methods
 
 	@Override
-	protected void initBox2D(World world, int x, int y){
+	protected void initBox2D(World world, int positionX, int positionY){
 
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();
@@ -42,7 +47,7 @@ public class Paddle extends AbstractGameObject{
 
 		// Create our body in the world using our body definition
 		Body body = world.createBody(bodyDef);
-		body.getPosition().set(Constants.PADDLE_WIDTH / 2, Constants.PADDLE_HEIGHT / 2);
+		body.getPosition().set(new Vector2(positionX, positionY));
 
 		// Create shape of paddle
 		PolygonShape shape = new PolygonShape();

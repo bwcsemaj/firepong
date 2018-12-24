@@ -7,9 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Disposable;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class WorldRenderer implements Disposable{
 
@@ -18,8 +16,6 @@ public class WorldRenderer implements Disposable{
 	private SpriteBatch batch;
 	private WorldController worldController;
 	private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
-	private Stage stage;
-	private FitViewport viewport;
 
 	// Start Constructors
 	public WorldRenderer(WorldController worldController){
@@ -31,13 +27,9 @@ public class WorldRenderer implements Disposable{
 
 	// Start Methods
 	private void init(){
+
 		batch = new SpriteBatch();
-		camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH * Constants.PPM,
-			Constants.VIEWPORT_HEIGHT * Constants.PPM);
-		viewport = new FitViewport(800, 480, camera);
-		// Stage
-		stage = new Stage(viewport, batch);
-		stage.setDebugAll(true);
+		camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
 
 		// camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
 		batch.setProjectionMatrix(camera.combined);
@@ -47,7 +39,6 @@ public class WorldRenderer implements Disposable{
 	}
 
 	public void render(){
-		stage.draw();
 		debugRenderer.render(worldController.getWorld(), camera.combined);
 		// batch.setProjectionMatrix(camera.combined, debugRenderer);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -57,12 +48,11 @@ public class WorldRenderer implements Disposable{
 		Arrays.asList(worldController.getCorners()).stream().forEach(corner -> {
 			corner.draw(batch);
 		});
-
 		batch.end();
 	}
 
 	public void resize(int width, int height){
-		viewport.update(width, height);
+
 	}
 
 	@Override
