@@ -22,7 +22,7 @@ public class Ball extends AbstractGameObject{
 	// Start Constructors
 	public Ball(World world, AssetManager assetManager, int x, int y){
 		super(world, x, y);
-
+		initBox2D(world, x, y);
 		// Initialize Sprite
 		// Texture ballTexture = assetManager.get("Ball.png", Texture.class);
 		// sprite = new Sprite(ballTexture);
@@ -31,8 +31,7 @@ public class Ball extends AbstractGameObject{
 
 	// Start Methods
 
-	@Override
-	protected void initBox2D(World world, int positionX, int positionY){
+	private void initBox2D(World world, int positionX, int positionY){
 
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();

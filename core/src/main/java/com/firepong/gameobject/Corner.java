@@ -26,13 +26,14 @@ public class Corner extends AbstractGameObject{
 		// Initialize Sprite
 		sprite = new Sprite(texture);
 
+		initBox2D(world, x, y);
+
 	}
 	// End Constructors
 
 	// Start Methods
 
-	@Override
-	protected void initBox2D(World world, int positionX, int positionY){
+	private void initBox2D(World world, int positionX, int positionY){
 
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();

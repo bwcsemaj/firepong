@@ -41,8 +41,7 @@ public class Paddle extends AbstractGameObject implements Movable{
 
 	// Start Methods
 
-	@Override
-	protected void initBox2D(World world, int positionX, int positionY){
+	private void initBox2D(World world, int positionX, int positionY){
 
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();

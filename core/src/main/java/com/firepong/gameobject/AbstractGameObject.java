@@ -13,15 +13,11 @@ public abstract class AbstractGameObject implements GameObjectDrawable{
 
 	// Start Constructors
 
-	public AbstractGameObject(World world, int x, int y){
-		// Initialize Box2D
-		initBox2D(world, x, y);
-	}
+	public AbstractGameObject(World world, int x, int y){}
 
 	// End Constructors
 
 	// Start Methods
-	protected abstract void initBox2D(World world, int positionX, int positionY);
 	// End Methods
 
 }
