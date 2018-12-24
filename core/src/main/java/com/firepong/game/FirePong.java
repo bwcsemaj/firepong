@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -52,12 +51,12 @@ public class FirePong extends ApplicationAdapter{
 
 	private void initAssetManager(){
 		assetManager = new AssetManager();
-		assetManager.load("Ball.png", Texture.class);
-		assetManager.load("Square.png", Texture.class);
-		assetManager.load("Square1.png", Texture.class);
-		assetManager.load("Square2.png", Texture.class);
-		assetManager.load("Square3.png", Texture.class);
-		assetManager.load("Square4.png", Texture.class);
+		// assetManager.load("Ball.png", Texture.class);
+		// assetManager.load("Square.png", Texture.class);
+		// assetManager.load("Square1.png", Texture.class);
+		// assetManager.load("Square2.png", Texture.class);
+		// assetManager.load("Square3.png", Texture.class);
+		// assetManager.load("Square4.png", Texture.class);
 		assetManager.finishLoading();
 	}
 

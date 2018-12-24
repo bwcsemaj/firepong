@@ -11,8 +11,8 @@ public class PlayerPaddle extends Paddle{
 
 	// Start Constructors
 	public PlayerPaddle(World world, CardinalDirection cardinalDirection, Texture texture, int positionX,
-		int positionY){
-		super(world, cardinalDirection, texture, positionX, positionY);
+		int positionY, int width, int height){
+		super(world, cardinalDirection, texture, positionX, positionY, width, height);
 	}
 	// End Constructors
 
