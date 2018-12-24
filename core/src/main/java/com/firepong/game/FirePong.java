@@ -6,6 +6,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import lombok.Getter;
@@ -45,8 +46,7 @@ public class FirePong extends ApplicationAdapter{
 		gameController.init();
 
 		// Move the ball
-		// gameController.getBall().getBody().setLinearVelocity(new Vector2(1000, 100));
-
+		gameController.getBall().getBody().setLinearVelocity(new Vector2(10000, 1));
 	}
 
 	private void initAssetManager(){
