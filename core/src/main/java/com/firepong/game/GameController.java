@@ -26,6 +26,8 @@ public class GameController{
 
 	@Getter private Corner[] corners;
 	@Getter private Ball ball;
+	@Getter private Ball ball1;
+	@Getter private Ball ball2;
 	@Getter private Paddle[] paddles;
 
 	// Start Constructors
@@ -123,6 +125,8 @@ public class GameController{
 
 		// Ball
 		ball = new Ball(world, assetManager, Constants.VIEWPORT / 2, Constants.VIEWPORT / 2);
+		ball1 = new Ball(world, assetManager, Constants.VIEWPORT / 2, Constants.VIEWPORT / 2);
+		ball2 = new Ball(world, assetManager, Constants.VIEWPORT / 2, Constants.VIEWPORT / 2);
 
 	}
 

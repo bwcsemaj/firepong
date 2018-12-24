@@ -13,6 +13,6 @@ public class Constants{
 	public static final float GOAL_SMALL = .001f;
 	public static final float GOAL_BIG = VIEWPORT - (CORNER_SIZE * 2);
 
-	public static final float BALL_RADIUS = 1f;
+	public static final float BALL_RADIUS = .2f;
 
 }
