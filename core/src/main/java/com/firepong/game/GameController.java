@@ -98,20 +98,20 @@ public class GameController{
 			Paddle paddle = directionToPaddle.get(direction);
 			switch(direction){
 				case EAST:
-					goal =
-						new Goal(Constants.VIEWPORT, 0, Constants.GOAL_SMALL, Constants.GOAL_BIG, paddle, world);
+					goal = new Goal(Constants.VIEWPORT, Constants.CORNER_SIZE * 2, Constants.GOAL_SMALL,
+						Constants.GOAL_BIG, paddle, world);
 					break;
 				case NORTH:
-					goal = new Goal(Constants.VIEWPORT / 2, Constants.VIEWPORT, Constants.GOAL_BIG,
+					goal = new Goal(Constants.CORNER_SIZE * 2, Constants.VIEWPORT, Constants.GOAL_BIG,
 						Constants.GOAL_SMALL, paddle, world);
 					break;
 				case SOUTH:
-					goal = new Goal(Constants.VIEWPORT / 2, 0, Constants.GOAL_BIG, Constants.GOAL_SMALL, paddle,
+					goal = new Goal(Constants.CORNER_SIZE * 2, 0, Constants.GOAL_BIG, Constants.GOAL_SMALL, paddle,
 						world);
 					break;
 				case WEST:
-					goal =
-						new Goal(0, Constants.VIEWPORT, Constants.GOAL_SMALL, Constants.GOAL_BIG, paddle, world);
+					goal = new Goal(0, Constants.CORNER_SIZE * 2, Constants.GOAL_SMALL, Constants.GOAL_BIG, paddle,
+						world);
 					break;
 				default:
 					break;
