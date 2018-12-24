@@ -31,6 +31,12 @@ sourceSets {
     }
 }
 
+repositories { 
+	mavenCentral()
+	jcenter()
+}
+
+
 dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
