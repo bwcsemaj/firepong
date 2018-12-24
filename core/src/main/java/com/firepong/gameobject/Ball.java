@@ -56,7 +56,7 @@ public class Ball extends AbstractGameObject{
 		fixtureDef.friction = 0f;
 		fixtureDef.restitution = 1.1f; // Make it bounce a little bit
 
-		// Create our fixture and attach it to the body
+		// Create our fixture and attach it to the bodya
 		Fixture fixture = body.createFixture(fixtureDef);
 
 		// Remember to dispose of any shapes after you're done with them!
