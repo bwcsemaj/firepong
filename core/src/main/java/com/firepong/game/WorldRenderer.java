@@ -4,18 +4,11 @@ import java.util.Arrays;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.utils.Disposable;
 
 public class WorldRenderer implements Disposable{
 
 	// Attributes
-	private OrthographicCamera camera;
-	private SpriteBatch batch;
-	private WorldController worldController;
-	private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
 
 	// Start Constructors
 	public WorldRenderer(WorldController worldController){
@@ -27,14 +20,6 @@ public class WorldRenderer implements Disposable{
 
 	// Start Methods
 	private void init(){
-
-		batch = new SpriteBatch();
-		camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
-
-		// camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
-		batch.setProjectionMatrix(camera.combined);
-		// Set camera Position: X, Y, Z
-		camera.update();
 
 	}
 
