@@ -1,10 +1,10 @@
 package com.firepong.gameobject.paddle;
 
-import com.firepong.game.WorldController;
+import com.firepong.game.GameController;
 
 public interface Movable{
 
-	public void move(WorldController controller);
+	public void move(GameController controller);
 
 	public float getMoveVelocity();
 }

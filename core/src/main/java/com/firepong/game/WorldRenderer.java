@@ -1,18 +1,19 @@
 package com.firepong.game;
 
-import java.util.Arrays;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.utils.Disposable;
 
 public class WorldRenderer implements Disposable{
 
 	// Attributes
+	private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
+	private GameController gameController;
+	private OrthographicCamera camera;
 
 	// Start Constructors
-	public WorldRenderer(WorldController worldController){
-		this.worldController = worldController;
+	public WorldRenderer(GameController gameController){
+		this.gameController = gameController;
 		init();
 	}
 
@@ -20,20 +21,16 @@ public class WorldRenderer implements Disposable{
 
 	// Start Methods
 	private void init(){
-
+		debugRenderer = new Box2DDebugRenderer();
+		camera = new OrthographicCamera();
+		camera.viewportHeight = 1000;
+		camera.viewportWidth = 1000;
+		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);
+		camera.update();
 	}
 
 	public void render(){
-		debugRenderer.render(worldController.getWorld(), camera.combined);
-		// batch.setProjectionMatrix(camera.combined, debugRenderer);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		batch.begin();
-		worldController.update(Gdx.graphics.getDeltaTime());
-		Arrays.asList(worldController.getCorners()).stream().forEach(corner -> {
-			corner.draw(batch);
-		});
-		batch.end();
+		debugRenderer.render(gameController.getWorld(), camera.combined);
 	}
 
 	public void resize(int width, int height){
@@ -41,9 +38,7 @@ public class WorldRenderer implements Disposable{
 	}
 
 	@Override
-	public void dispose(){
-		batch.dispose();
-	}
+	public void dispose(){}
 
 	// End Methods
 

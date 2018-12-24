@@ -1,8 +1,5 @@
 package com.firepong.game;
 
-import java.util.Arrays;
-import java.util.stream.IntStream;
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -10,28 +7,19 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.firepong.gameobject.Ball;
-import com.firepong.gameobject.Corner;
-import com.firepong.gameobject.paddle.Paddle;
 
 import lombok.Getter;
 
 public class FirePong extends ApplicationAdapter{
 
-	private WorldController worldController;
+	private GameController gameController;
 	private WorldRenderer worldRenderer;
 	private AssetManager assetManager;
 	@Getter private World world;// Box2D
-	@Getter private Corner[] corners;
-	@Getter private Ball ball;
-	@Getter private Paddle[] paddles;
 
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
 
 	private boolean gameActive = false;
 
@@ -42,12 +30,11 @@ public class FirePong extends ApplicationAdapter{
 	@Override
 	public void create(){
 
-		debugRenderer = new Box2DDebugRenderer();
-		camera = new OrthographicCamera();
-		camera.viewportHeight = 1000;
-		camera.viewportWidth = 1000;
-		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);
-		camera.update();
+		// Assets
+		initAssetManager();
+
+		gameController = new GameController(assetManager);
+		worldRenderer = new WorldRenderer(gameController);
 
 		startGame();
 	}
@@ -55,26 +42,11 @@ public class FirePong extends ApplicationAdapter{
 	private void startGame(){
 		gameActive = true;
 
-		world = new World(new Vector2(0, 0), true);
+		// Create Game Controller / Objects
+		gameController.init();
 
-		// Corners
-		int[][] points = new int[][] {{0, 0}, {Constants.VIEWPORT_WIDTH - Constants.CORNER_SIZE, 0},
-			{0, Constants.VIEWPORT_HEIGHT - Constants.CORNER_SIZE},
-			{Constants.VIEWPORT_WIDTH - Constants.CORNER_SIZE,
-				Constants.VIEWPORT_HEIGHT - Constants.CORNER_SIZE}};
-		corners = new Corner[4];
-		IntStream.range(0, 4).forEach(value -> {
-			System.out.println(Arrays.toString(points[value]));
-			Texture texture = new Texture("Square" + Integer.toString(value + 1) + ".png");
-			Corner corner = new Corner(world, texture, assetManager, points[value][0], points[value][1]);
-			corners[value] = corner;
-		});
-
-		// Wall
-
-		// Ball
-
-		// Paddles
+		// Move the ball
+		// gameController.getBall().getBody().setLinearVelocity(new Vector2(1000, 100));
 
 	}
 
@@ -92,10 +64,14 @@ public class FirePong extends ApplicationAdapter{
 	@Override
 	public void render(){
 
+		if(!gameActive){
+			startGame();
+		}
+
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		// Update game world by the time that has passed
-		worldController.update(Gdx.graphics.getDeltaTime());
+		gameController.update(Gdx.graphics.getDeltaTime());
 
 		// Render game world to Screen
 		worldRenderer.render();

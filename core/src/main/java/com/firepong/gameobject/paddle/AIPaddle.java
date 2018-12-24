@@ -3,7 +3,7 @@ package com.firepong.gameobject.paddle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.firepong.game.CardinalDirection;
-import com.firepong.game.WorldController;
+import com.firepong.game.GameController;
 
 public class AIPaddle extends Paddle{
 
@@ -18,7 +18,7 @@ public class AIPaddle extends Paddle{
 
 	// Start Methods
 	@Override
-	public void move(WorldController controller){
+	public void move(GameController controller){
 
 	}
 	// End Methods
