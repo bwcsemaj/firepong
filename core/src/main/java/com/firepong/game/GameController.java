@@ -63,12 +63,28 @@ public class GameController{
 		// WEST 0, VIEWPORT_HEIGHT/2: GOAL_SMALL, GOAL_BIG
 
 		// Ball
+		ball = new Ball(world, assetManager, Constants.VIEWPORT / 2, Constants.VIEWPORT / 2);
 
+		paddles = new Paddle[4];
 		// Paddles POSX, POXY : WIDTH, HEIGHT
 		// NORTH VIEWPORT_WIDTH/2, 900 : PADDLE_BIG, PADDLE_SMALL
+		paddles[0] = new Paddle(world, CardinalDirection.NORTH, (Constants.VIEWPORT / 2),
+			Constants.VIEWPORT - Constants.PADDLE_SMALL - Constants.PADDLE_PADDING, Constants.PADDLE_BIG,
+			Constants.PADDLE_SMALL);
+
 		// SOUTH VIEWPORT_WIDTH/2, 0 : PADDLE_BIG, PADDLE_SMALL
+		paddles[0] = new Paddle(world, CardinalDirection.SOUTH, (Constants.VIEWPORT / 2),
+			Constants.PADDLE_PADDING, Constants.PADDLE_BIG, Constants.PADDLE_SMALL);
+
 		// EAST 900, VIEWPORT_HEIGHT/2 : PADDLE_SMALL, PADDLE_BIG
+		paddles[0] = new Paddle(world, CardinalDirection.EAST, Constants.PADDLE_PADDING,
+			(Constants.VIEWPORT / 2), Constants.PADDLE_BIG, Constants.PADDLE_SMALL);
+
 		// WEST 0, VIEWPORT_HEIGHT/2 : PADDLE_SMALL, PADDLE_BIG
+		paddles[0] = new Paddle(world, CardinalDirection.WEST,
+			Constants.VIEWPORT - Constants.PADDLE_SMALL - Constants.PADDLE_PADDING, (Constants.VIEWPORT / 2),
+			Constants.PADDLE_BIG, Constants.PADDLE_SMALL);
+
 	}
 
 	public void update(float deltaTime){

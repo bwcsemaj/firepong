@@ -1,6 +1,5 @@
 package com.firepong.gameobject.paddle;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -11,11 +10,12 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.firepong.game.CardinalDirection;
+import com.firepong.game.GameController;
 import com.firepong.gameobject.AbstractGameObject;
 
 import lombok.Getter;
 
-public abstract class Paddle extends AbstractGameObject implements Movable{
+public class Paddle extends AbstractGameObject implements Movable{
 
 	// Attributes
 	@Getter private Sprite sprite;
@@ -25,15 +25,15 @@ public abstract class Paddle extends AbstractGameObject implements Movable{
 	@Getter private final int height;
 
 	// Start Constructors
-	public Paddle(World world, CardinalDirection direction, Texture texture, int positionX, int positionY,
-		int width, int height){
+	public Paddle(World world, CardinalDirection direction, int positionX, int positionY, int width,
+		int height){
 		super(world, positionX, positionY);
 		this.width = width;
 		this.height = height;
 		this.direction = direction;
 
 		// Initialize Sprite
-		sprite = new Sprite(texture);
+		// sprite = new Sprite(texture);
 	}
 	// End Constructors
 
@@ -70,6 +70,12 @@ public abstract class Paddle extends AbstractGameObject implements Movable{
 		shape.dispose();
 
 		setBody(body);
+	}
+
+	@Override
+	public void move(GameController controller){
+		// TODO Auto-generated method stub
+		return;
 	}
 
 	// End Methods

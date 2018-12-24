@@ -6,6 +6,7 @@ public class Constants{
 
 	public static final int PADDLE_SMALL = 50;
 	public static final int PADDLE_BIG = 200;
+	public static final int PADDLE_PADDING = 100;
 
 	public static final int CORNER_SIZE = 50;
 
