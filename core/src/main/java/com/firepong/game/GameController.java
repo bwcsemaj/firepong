@@ -44,8 +44,9 @@ public class GameController{
 		world = new World(new Vector2(0, 0), true);
 
 		// Corners
-		int[][] points = new int[][] {{0, 0}, {Constants.VIEWPORT_WIDTH - Constants.CORNER_SIZE, 0},
-			{0, Constants.VIEWPORT_HEIGHT - Constants.CORNER_SIZE},
+		int[][] points = new int[][] {{Constants.CORNER_SIZE, Constants.CORNER_SIZE},
+			{Constants.VIEWPORT_WIDTH - Constants.CORNER_SIZE, Constants.CORNER_SIZE},
+			{Constants.CORNER_SIZE, Constants.VIEWPORT_HEIGHT - Constants.CORNER_SIZE},
 			{Constants.VIEWPORT_WIDTH - Constants.CORNER_SIZE,
 				Constants.VIEWPORT_HEIGHT - Constants.CORNER_SIZE}};
 		corners = new Corner[4];
