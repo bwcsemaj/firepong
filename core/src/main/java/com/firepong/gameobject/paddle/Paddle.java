@@ -11,7 +11,6 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.firepong.game.CardinalDirection;
-import com.firepong.game.Constants;
 import com.firepong.gameobject.AbstractGameObject;
 
 import lombok.Getter;
@@ -22,11 +21,15 @@ public abstract class Paddle extends AbstractGameObject implements Movable{
 	@Getter private Sprite sprite;
 	@Getter final private CardinalDirection direction;
 	@Getter private final float moveVelocity = 200;
+	@Getter private final int width;
+	@Getter private final int height;
 
 	// Start Constructors
-	public Paddle(World world, CardinalDirection direction, Texture texture, int positionX, int positionY){
+	public Paddle(World world, CardinalDirection direction, Texture texture, int positionX, int positionY,
+		int width, int height){
 		super(world, positionX, positionY);
-
+		this.width = width;
+		this.height = height;
 		this.direction = direction;
 
 		// Initialize Sprite
@@ -51,7 +54,7 @@ public abstract class Paddle extends AbstractGameObject implements Movable{
 
 		// Create shape of paddle
 		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(Constants.PADDLE_WIDTH, Constants.PADDLE_HEIGHT);
+		shape.setAsBox(width, height);
 
 		// Create a fixture definition to apply our shape to
 		FixtureDef fixtureDef = new FixtureDef();

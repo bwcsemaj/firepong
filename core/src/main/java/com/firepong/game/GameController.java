@@ -45,10 +45,9 @@ public class GameController{
 
 		// Corners
 		int[][] points = new int[][] {{Constants.CORNER_SIZE, Constants.CORNER_SIZE},
-			{Constants.VIEWPORT_WIDTH - Constants.CORNER_SIZE, Constants.CORNER_SIZE},
-			{Constants.CORNER_SIZE, Constants.VIEWPORT_HEIGHT - Constants.CORNER_SIZE},
-			{Constants.VIEWPORT_WIDTH - Constants.CORNER_SIZE,
-				Constants.VIEWPORT_HEIGHT - Constants.CORNER_SIZE}};
+			{Constants.VIEWPORT - Constants.CORNER_SIZE, Constants.CORNER_SIZE},
+			{Constants.CORNER_SIZE, Constants.VIEWPORT - Constants.CORNER_SIZE},
+			{Constants.VIEWPORT - Constants.CORNER_SIZE, Constants.VIEWPORT - Constants.CORNER_SIZE}};
 		corners = new Corner[4];
 		IntStream.range(0, 4).forEach(value -> {
 			System.out.println(Arrays.toString(points[value]));
@@ -57,15 +56,19 @@ public class GameController{
 			corners[value] = corner;
 		});
 
-		// Wall POSITION X, POSITION Y : START X START Y
-		// NORTH VIEWPORT_WIDTH/2, 900: VIEWPORT_WIDTH-(CORNER*2), 1
-		// SOUTH VIEWPORT_WIDTH/2, 0: VIEWPORT_WIDTH-(CORNER*2), 1
-		// EAST 900, VIEWPORT_HEIGHT/2: 1, VIEWPORT_HEIGHT-(CorNER*2)
-		// WEST 0, VIEWPORT_HEIGHT/2: 1, VIEWPORT_HEIGHT-(CorNER*2)
+		// Wall POSITION X, POSITION Y : WIDTH, HEIGHT
+		// NORTH VIEWPORT_WIDTH/2, 900: GOAL_BIG, GOAL_SMALL
+		// SOUTH VIEWPORT_WIDTH/2, 0: GOAL_BIG, GOAL_SMALL
+		// EAST 900, VIEWPORT_HEIGHT/2: GOAL_SMALL, GOAL_BIG
+		// WEST 0, VIEWPORT_HEIGHT/2: GOAL_SMALL, GOAL_BIG
 
 		// Ball
 
-		// Paddles
+		// Paddles POSX, POXY : WIDTH, HEIGHT
+		// NORTH VIEWPORT_WIDTH/2, 900 : PADDLE_BIG, PADDLE_SMALL
+		// SOUTH VIEWPORT_WIDTH/2, 0 : PADDLE_BIG, PADDLE_SMALL
+		// EAST 900, VIEWPORT_HEIGHT/2 : PADDLE_SMALL, PADDLE_BIG
+		// WEST 0, VIEWPORT_HEIGHT/2 : PADDLE_SMALL, PADDLE_BIG
 	}
 
 	public void update(float deltaTime){
