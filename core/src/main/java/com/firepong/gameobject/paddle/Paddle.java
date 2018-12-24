@@ -21,12 +21,12 @@ public class Paddle extends AbstractGameObject implements Movable{
 	@Getter private Sprite sprite;
 	@Getter final private CardinalDirection direction;
 	// @Getter private final float moveVelocity = 200;
-	@Getter private final int width;
-	@Getter private final int height;
+	@Getter private final float width;
+	@Getter private final float height;
 
 	// Start Constructors
-	public Paddle(World world, CardinalDirection direction, int positionX, int positionY, int width,
-		int height){
+	public Paddle(World world, CardinalDirection direction, float positionX, float positionY, float width,
+		float height){
 		super(world, positionX, positionY);
 		this.width = width;
 		this.height = height;
@@ -41,7 +41,7 @@ public class Paddle extends AbstractGameObject implements Movable{
 
 	// Start Methods
 
-	private void initBox2D(World world, int positionX, int positionY){
+	private void initBox2D(World world, float positionX, float positionY){
 
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();

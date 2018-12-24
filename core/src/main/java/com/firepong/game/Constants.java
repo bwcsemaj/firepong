@@ -2,17 +2,17 @@ package com.firepong.game;
 
 public class Constants{
 
-	public static final int VIEWPORT = 100;
+	public static final int VIEWPORT = 10;
 
-	public static final int PADDLE_SMALL = 2;
-	public static final int PADDLE_BIG = 5;
-	public static final int PADDLE_PADDING = 1;
+	public static final float PADDLE_SMALL = .25f;
+	public static final float PADDLE_BIG = 1;
+	public static final float PADDLE_PADDING = .1f;
 
-	public static final int CORNER_SIZE = 5;
+	public static final float CORNER_SIZE = .5f;
 
-	public static final int GOAL_SMALL = 1;
-	public static final int GOAL_BIG = VIEWPORT - (CORNER_SIZE * 2);
+	public static final float GOAL_SMALL = .001f;
+	public static final float GOAL_BIG = VIEWPORT - (CORNER_SIZE * 2);
 
-	public static final int BALL_RADIUS = 5;
+	public static final float BALL_RADIUS = 1f;
 
 }

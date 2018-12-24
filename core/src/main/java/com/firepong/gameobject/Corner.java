@@ -20,7 +20,7 @@ public class Corner extends AbstractGameObject{
 	@Getter private Sprite sprite;
 
 	// Start Constructors
-	public Corner(World world, Texture texture, AssetManager assetManager, int x, int y){
+	public Corner(World world, Texture texture, AssetManager assetManager, float x, float y){
 		super(world, x, y);
 
 		// Initialize Sprite
@@ -33,7 +33,7 @@ public class Corner extends AbstractGameObject{
 
 	// Start Methods
 
-	private void initBox2D(World world, int positionX, int positionY){
+	private void initBox2D(World world, float positionX, float positionY){
 
 		// First we create a body definition
 		BodyDef bodyDef = new BodyDef();

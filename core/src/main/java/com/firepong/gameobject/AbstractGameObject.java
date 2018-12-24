@@ -13,7 +13,7 @@ public abstract class AbstractGameObject implements GameObjectDrawable{
 
 	// Start Constructors
 
-	public AbstractGameObject(World world, int x, int y){}
+	public AbstractGameObject(World world, float x, float y){}
 
 	// End Constructors
 

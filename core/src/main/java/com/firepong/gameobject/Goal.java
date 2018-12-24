@@ -18,19 +18,19 @@ public class Goal{
 	// Attributes
 	@Getter @Setter Body body;// box2d physics object
 	Vector2 position;// pixel position
-	int width;// in pixels
-	int height;// in pixels
+	float width;// in pixels
+	float height;// in pixels
 	Paddle paddle;// player paddle this goal corresponds to
 
 	// Start Constructors
-	public Goal(int xpos, int ypos, int width, int height, Paddle paddle, World world){
+	public Goal(float xpos, float ypos, float width, float height, Paddle paddle, World world){
 
 		this.position = new Vector2(xpos, ypos);
 		this.width = width;
 		this.height = height;
 		this.paddle = paddle;
 
-		initBox2D(world, (int) this.position.x, (int) this.position.y);
+		initBox2D(world, this.position.x, this.position.y);
 
 	}
 
@@ -38,7 +38,7 @@ public class Goal{
 
 	// Start Methods
 
-	protected void initBox2D(World world, int positionX, int positionY){
+	protected void initBox2D(World world, float positionX, float positionY){
 
 		BodyDef bodyDef = new BodyDef();
 

@@ -49,7 +49,7 @@ public class GameController{
 		world = new World(new Vector2(0, 0), true);
 
 		// Corners
-		int[][] points = new int[][] {{Constants.CORNER_SIZE, Constants.CORNER_SIZE},
+		float[][] points = new float[][] {{Constants.CORNER_SIZE, Constants.CORNER_SIZE},
 			{Constants.VIEWPORT - Constants.CORNER_SIZE, Constants.CORNER_SIZE},
 			{Constants.CORNER_SIZE, Constants.VIEWPORT - Constants.CORNER_SIZE},
 			{Constants.VIEWPORT - Constants.CORNER_SIZE, Constants.VIEWPORT - Constants.CORNER_SIZE}};
@@ -127,7 +127,6 @@ public class GameController{
 	}
 
 	public void update(float deltaTime){
-		System.out.println(deltaTime);
 		world.step(deltaTime, 10, 20);
 		// Arrays.asList(paddles).stream().forEach(paddle -> {
 		// paddle.move(this);

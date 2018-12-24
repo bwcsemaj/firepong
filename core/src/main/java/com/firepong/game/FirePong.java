@@ -72,6 +72,7 @@ public class FirePong extends ApplicationAdapter{
 		// Update game world by the time that has passed
 		gameController.update(Gdx.graphics.getDeltaTime());
 
+		System.out.println(Gdx.graphics.getFramesPerSecond());
 		// Render game world to Screen
 		worldRenderer.render();
 	}
