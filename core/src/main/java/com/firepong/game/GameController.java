@@ -62,13 +62,6 @@ public class GameController{
 		// SOUTH VIEWPORT_WIDTH/2, 0: VIEWPORT_WIDTH-(CORNER*2), 1
 		// EAST 900, VIEWPORT_HEIGHT/2: 1, VIEWPORT_HEIGHT-(CorNER*2)
 		// WEST 0, VIEWPORT_HEIGHT/2: 1, VIEWPORT_HEIGHT-(CorNER*2)
-		corners = new Corner[4];
-		IntStream.range(0, 4).forEach(value -> {
-			System.out.println(Arrays.toString(points[value]));
-			Texture texture = new Texture("Square" + Integer.toString(value + 1) + ".png");
-			Corner corner = new Corner(world, texture, assetManager, points[value][0], points[value][1]);
-			corners[value] = corner;
-		});
 
 		// Ball
 
