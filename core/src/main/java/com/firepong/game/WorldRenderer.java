@@ -23,8 +23,8 @@ public class WorldRenderer implements Disposable{
 	private void init(){
 		debugRenderer = new Box2DDebugRenderer();
 		camera = new OrthographicCamera();
-		camera.viewportHeight = 1000;
-		camera.viewportWidth = 1000;
+		camera.viewportHeight = Constants.VIEWPORT;
+		camera.viewportWidth = Constants.VIEWPORT;
 		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);
 		camera.update();
 	}

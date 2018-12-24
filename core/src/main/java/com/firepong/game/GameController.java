@@ -127,7 +127,8 @@ public class GameController{
 	}
 
 	public void update(float deltaTime){
-		world.step(deltaTime, 6, 2);
+		System.out.println(deltaTime);
+		world.step(deltaTime, 10, 20);
 		// Arrays.asList(paddles).stream().forEach(paddle -> {
 		// paddle.move(this);
 		// });

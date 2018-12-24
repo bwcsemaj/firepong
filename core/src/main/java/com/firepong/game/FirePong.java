@@ -46,7 +46,7 @@ public class FirePong extends ApplicationAdapter{
 		gameController.init();
 
 		// Move the ball
-		gameController.getBall().getBody().setLinearVelocity(new Vector2(10000, 1));
+		gameController.getBall().getBody().setLinearVelocity(new Vector2(999999999, 999999999));
 	}
 
 	private void initAssetManager(){
