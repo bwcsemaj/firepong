@@ -68,7 +68,8 @@ public class GameController{
 			Paddle paddle = null;
 			switch(direction){
 				case EAST:
-					paddle = new Paddle(world, CardinalDirection.EAST, Constants.PADDLE_PADDING,
+					new Paddle(world, CardinalDirection.EAST,
+						Constants.VIEWPORT - Constants.PADDLE_SMALL - Constants.PADDLE_PADDING,
 						(Constants.VIEWPORT / 2), Constants.PADDLE_SMALL, Constants.PADDLE_BIG);
 					break;
 				case NORTH:
@@ -76,14 +77,15 @@ public class GameController{
 						Constants.VIEWPORT - Constants.PADDLE_SMALL - Constants.PADDLE_PADDING,
 						Constants.PADDLE_BIG, Constants.PADDLE_SMALL);
 					break;
-				case SOUTH:
+				case SOUTH:// SOUTH VIEWPORT_WIDTH/2, 0 : PADDLE_BIG, PADDLE_SMALL
 					paddle = new Paddle(world, CardinalDirection.SOUTH, (Constants.VIEWPORT / 2),
-						Constants.PADDLE_PADDING, Constants.PADDLE_BIG, Constants.PADDLE_SMALL);
+						Constants.PADDLE_PADDING + Constants.PADDLE_SMALL, Constants.PADDLE_BIG,
+						Constants.PADDLE_SMALL);
 					break;
-				case WEST:
-					paddle = new Paddle(world, CardinalDirection.WEST,
-						Constants.VIEWPORT - Constants.PADDLE_SMALL - Constants.PADDLE_PADDING,
-						(Constants.VIEWPORT / 2), Constants.PADDLE_SMALL, Constants.PADDLE_BIG);
+				case WEST:// WEST 0, VIEWPORT_HEIGHT/2 : PADDLE_SMALL, PADDLE_BIG
+					paddle =
+						new Paddle(world, CardinalDirection.WEST, Constants.PADDLE_SMALL + Constants.PADDLE_PADDING,
+							(Constants.VIEWPORT / 2), Constants.PADDLE_SMALL, Constants.PADDLE_BIG);
 					break;
 				default:
 					break;
